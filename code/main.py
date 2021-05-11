@@ -17,7 +17,7 @@ time_inference_lst = []
 memory_lst = []
 time_pretraining_lst = []
 
-# 1 - LOAD DATASET
+# 0 - LOAD DATASET
 # ------------------------------------------------------------
 dataset_name = 'clinc150-data_full'
 dataset_path = os.path.join(DS_CLINC150_PATH, 'data_full.json')
@@ -28,6 +28,9 @@ dataset_path = os.path.join(DS_CLINC150_PATH, 'data_full.json')
 
 with open(dataset_path) as f:
     old_dataset = json.load(f)
+
+# 1 - LIMIT NUMBER OF SENTENCES?
+LIMIT_NUM_SENTS = None  # either None (i.e. no limit) or int with value > 0 (i.e. maximal number of sentences per class).
 
 # 2 - CHOOSE KNOWN RATIO
 KNOWN_RATIO = 0.25
@@ -69,25 +72,25 @@ for r in range(10):
     dataset['test'] = filt_test
 
     # 4B-2 - CHOOSE EMBEDDING (with pre-training)
-    # embed_f, time_pretraining = create_embed_f(use_dan, dataset, limit_num_sents=None, type='cosface')
+    # embed_f, time_pretraining = create_embed_f(use_dan, dataset, LIMIT_NUM_SENTS, type='cosface')
     # emb_name = 'use_dan_cosface'
     #
-    # embed_f, time_pretraining = create_embed_f(use_dan, dataset, limit_num_sents=None, type='triplet_loss')
+    # embed_f, time_pretraining = create_embed_f(use_dan, dataset, LIMIT_NUM_SENTS, type='triplet_loss')
     # emb_name = 'use_dan_triplet_loss'
     #
-    # embed_f, time_pretraining = create_embed_f(use_tran, dataset, limit_num_sents=None, type='cosface')
+    # embed_f, time_pretraining = create_embed_f(use_tran, dataset, LIMIT_NUM_SENTS, type='cosface')
     # emb_name = 'use_tran_cosface'
     #
-    # embed_f, time_pretraining = create_embed_f(use_tran, dataset, limit_num_sents=None, type='triplet_loss')
+    # embed_f, time_pretraining = create_embed_f(use_tran, dataset, LIMIT_NUM_SENTS, type='triplet_loss')
     # emb_name = 'use_tran_triplet_loss'
     #
-    # embed_f, time_pretraining = create_embed_f(sbert, dataset, limit_num_sents=None, type='cosface')
+    # embed_f, time_pretraining = create_embed_f(sbert, dataset, LIMIT_NUM_SENTS, type='cosface')
     # emb_name = 'sbert_cosface'
     #
-    # embed_f, time_pretraining = create_embed_f(sbert, dataset, limit_num_sents=None, type='triplet_loss')
+    # embed_f, time_pretraining = create_embed_f(sbert, dataset, LIMIT_NUM_SENTS, type='triplet_loss')
     # emb_name = 'sbert_triplet_loss'
 
-    results_dct = evaluate(dataset, model, model_name, embed_f, limit_num_sents=None)
+    results_dct = evaluate(dataset, model, model_name, embed_f, LIMIT_NUM_SENTS)
 
     accuracy_lst.append(results_dct['accuracy'])
     f1_lst.append(results_dct['f1'])
@@ -100,7 +103,10 @@ for r in range(10):
 
     print_results(dataset_name, model_name, emb_name, results_dct)
 
-print(f'Dataset: {dataset_name}, known ratio: {KNOWN_RATIO}')
+if LIMIT_NUM_SENTS is not None:
+    print(f'sentences limited to {LIMIT_NUM_SENTS}')
+
+print(f'dataset: {dataset_name}, embedding: {emb_name}, known ratio: {KNOWN_RATIO}, alpha: {alpha}')
 print(
     f'accuracy: {round(mean(accuracy_lst), 1)},'
     f' f1: {round(mean(f1_lst), 1)},'

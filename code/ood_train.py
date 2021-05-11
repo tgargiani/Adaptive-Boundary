@@ -11,7 +11,7 @@ def evaluate(dataset, model, model_name, embed_f, limit_num_sents):
     start_time_train = time.time()
 
     # Split dataset
-    X_train, y_train = split.get_X_y(dataset['train'], limit_num_sents=None, set_type='train')
+    X_train, y_train = split.get_X_y(dataset['train'], limit_num_sents=limit_num_sents, set_type='train')
 
     # Train
     model.fit(X_train, y_train)
