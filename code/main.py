@@ -55,7 +55,7 @@ emb_name = 'use_dan'
 # use_tran = hub.load(USE_TRAN_PATH)
 # sbert = SentenceTransformer('stsb-roberta-base').encode
 
-for r in range(5):
+for r in range(10):
     dataset = copy.deepcopy(old_dataset)
 
     num_classes = len(set([x[1] for x in dataset['train']]))
