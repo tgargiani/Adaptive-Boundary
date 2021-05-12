@@ -16,12 +16,12 @@ def find_best_radius(X_train, y_train, centroids, alpha, step_size):
 
         ood_mask = np.where(y != c, 1, 0)  # out-of-domain
         id_mask = np.where(y == c, 1, 0)  # in-domain
+        per = np.sum(ood_mask) / np.sum(id_mask)
 
         while radius[c] < 2:  # maximum distance on a unit n-sphere is 2
             ood_criterion = (dists_sel - radius[c]) * ood_mask
             id_criterion = (radius[c] - dists_sel) * id_mask
 
-            per = np.sum(ood_mask) / np.sum(id_mask)
             criterion = tf.reduce_mean(ood_criterion) - (tf.reduce_mean(id_criterion) * per / alpha)
 
             if criterion < 0:  # ID outweighs OOD
