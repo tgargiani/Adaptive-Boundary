@@ -10,8 +10,10 @@ from sentence_transformers import SentenceTransformer
 from statistics import mean
 
 time_pretraining = None
-accuracy_lst = []
-f1_lst = []
+accuracy_all_lst = []
+f1_all_lst = []
+f1_ood_lst = []
+f1_id_lst = []
 time_train_lst = []
 time_inference_lst = []
 memory_lst = []
@@ -92,8 +94,10 @@ for r in range(10):
 
     results_dct = evaluate(dataset, model, model_name, embed_f, LIMIT_NUM_SENTS)
 
-    accuracy_lst.append(results_dct['accuracy'])
-    f1_lst.append(results_dct['f1'])
+    accuracy_all_lst.append(results_dct['accuracy_all'])
+    f1_all_lst.append(results_dct['f1_all'])
+    f1_ood_lst.append(results_dct['f1_ood'])
+    f1_id_lst.append(results_dct['f1_id'])
     time_train_lst.append(results_dct['time_train'])
     time_inference_lst.append(results_dct['time_inference'])
     memory_lst.append(results_dct['memory'])
@@ -108,8 +112,10 @@ if LIMIT_NUM_SENTS is not None:
 
 print(f'dataset: {dataset_name}, embedding: {emb_name}, known ratio: {KNOWN_RATIO}, alpha: {alpha}')
 print(
-    f'accuracy: {round(mean(accuracy_lst), 1)},'
-    f' f1: {round(mean(f1_lst), 1)},'
+    f'accuracy_all: {round(mean(accuracy_all_lst), 1)},'
+    f' f1_all: {round(mean(f1_all_lst), 1)},'
+    f' f1_ood: {round(mean(f1_ood_lst), 1)},'
+    f' f1_id: {round(mean(f1_id_lst), 1)},'
     f' time_train: {round(mean(time_train_lst), 1)},'
     f' time_inference: {round(mean(time_inference_lst), 1)},'
     f' memory: {round(mean(memory_lst), 1)},'

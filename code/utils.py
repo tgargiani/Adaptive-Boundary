@@ -2,6 +2,7 @@ import os, random
 import tensorflow as tf
 import numpy as np
 import math
+from sklearn.metrics import confusion_matrix
 
 EMB_PATH = os.path.join(os.path.dirname(__file__), '..', 'embeddings')
 DS_PATH = os.path.join(os.path.dirname(__file__), '..', 'datasets')
@@ -156,3 +157,31 @@ def filter(lst, selection, mode):
                 ret.append([l[0], 'oos'])
 
     return ret
+
+
+def get_f1_ood_id(y_test, y_pred, oos_label):
+    """
+    Compute separate F1 scores for the out-of-domain class and in-domain classes.
+    Adapted from https://github.com/thuiar/Adaptive-Decision-Boundary/blob/9bcd4a8c6ccd3d50eaf04a89cb567f25f2a058f5/util.py#L64
+    """
+
+    conf_mat = confusion_matrix(y_test, y_pred)
+
+    f1_ood = 0
+    f1_id_lst = []
+    num_classes = conf_mat.shape[0]
+
+    for idx in range(num_classes):
+        tp = conf_mat[idx][idx]  # true positives
+        r = tp / conf_mat[idx].sum() if conf_mat[idx].sum() != 0 else 0  # recall
+        p = tp / conf_mat[:, idx].sum() if conf_mat[:, idx].sum() != 0 else 0  # precision
+        f = 2 * r * p / (r + p) if (r + p) != 0 else 0  # f1
+
+        if idx != oos_label:
+            f1_id_lst.append(f)
+        else:
+            f1_ood = f * 100
+
+    f1_id = np.mean(f1_id_lst) * 100
+
+    return f1_ood, f1_id
