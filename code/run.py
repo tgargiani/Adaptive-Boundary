@@ -130,7 +130,7 @@ def run(dataset_name):
                 f' memory: {memory},'
                 f' time_pretraining: {time_pretraining}')
 
-            with open(f'{dataset_name}_results.txt', 'w') as f:
+            with open(f'{dataset_name}_results.txt', 'a') as f:
                 f.write(
                     f'test_idx: {test_idx},'
                     f' dataset: {dataset_name},'
