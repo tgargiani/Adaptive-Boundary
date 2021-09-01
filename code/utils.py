@@ -12,6 +12,7 @@ USE_TRAN_PATH = os.path.join(EMB_PATH, 'universal-sentence-encoder-large_5')  # 
 
 DS_CLINC150_PATH = os.path.join(DS_PATH, 'CLINC150')
 DS_ROSTD_PATH = os.path.join(DS_PATH, 'ROSTD')
+DS_BANKING77_PATH = os.path.join(DS_PATH, 'BANKING77')
 
 
 class Split:
