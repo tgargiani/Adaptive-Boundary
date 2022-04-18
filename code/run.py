@@ -1,5 +1,4 @@
-from utils import DS_CLINC150_PATH, USE_DAN_PATH, USE_TRAN_PATH, print_results, get_intents_selection, filter, \
-    DS_BANKING77_PATH
+from utils import print_results, get_intents_selection, filter, DS_CLINC150_PATH, DS_BANKING77_PATH
 from custom_embeddings import create_embed_f
 from ADBThreshold import ADBThreshold
 from ood_train import evaluate

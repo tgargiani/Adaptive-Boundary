@@ -1,0 +1,7 @@
+numpy
+tensorflow
+tensorflow-addons
+tensorflow-hub
+sentence-transformers
+psutil
+scikit-learn
