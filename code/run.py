@@ -16,9 +16,6 @@ def run(dataset_name):
         dataset_path = os.path.join(DS_CLINC150_PATH, 'data_full.json')
     elif dataset_name == 'banking77':
         dataset_path = os.path.join(DS_BANKING77_PATH, 'banking77.json')
-    else:
-        print('Wrong dataset - choose clinc150 or banking77')
-        sys.exit(1)
 
     with open(dataset_path) as f:
         old_dataset = json.load(f)
@@ -152,4 +149,4 @@ if __name__ == '__main__':
     if len(sys.argv) == 2 and sys.argv[1] in ['clinc150', 'banking77']:
         run(sys.argv[1])
     else:
-        print('Usage: python3 run.py <dataset_name>')
+        print('Usage: python3 run.py {clinc150,banking77}')
