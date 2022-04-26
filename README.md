@@ -3,7 +3,7 @@
 ---
 
 ## About
-Source code for research paper Metric Learning and Adaptive Boundary for Out-of-Domain Detection (accepted to [NLDB 2022](https://nldb2022.prhlt.upv.es)).
+Source code for research paper [Metric Learning and Adaptive Boundary for Out-of-Domain Detection](https://arxiv.org/pdf/2204.10849.pdf) (accepted to [NLDB 2022](https://nldb2022.prhlt.upv.es)).
 
 ## Usage
 Run `python3 code/run.py {clinc150,banking77}` for chosen dataset to replicate results.
