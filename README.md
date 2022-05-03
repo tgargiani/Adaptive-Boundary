@@ -64,7 +64,18 @@ F1 score calculated for IND classes and OOD class separately.
 ## Citation
 If you like our work, please ⭐ this repository.
 
-*Note: citation will be available soon*
+```
+@misc{https://doi.org/10.48550/arxiv.2204.10849,
+  doi = {10.48550/ARXIV.2204.10849},
+  url = {https://arxiv.org/abs/2204.10849},
+  author = {Lorenc, Petr and Gargiani, Tommaso and Pichl, Jan and Konrád, Jakub and Marek, Petr and Kobza, Ondřej and Šedivý, Jan},
+  keywords = {Computation and Language (cs.CL), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {Metric Learning and Adaptive Boundary for Out-of-Domain Detection},
+  publisher = {arXiv},
+  year = {2022}, 
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+```
 
 ## Acknowledgments
 This research was partially supported by the Grant Agency of the Czech Technical University in Prague, grant
