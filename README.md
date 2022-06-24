@@ -3,21 +3,30 @@
 ---
 
 ## About
-Source code for research paper [Metric Learning and Adaptive Boundary for Out-of-Domain Detection](https://arxiv.org/pdf/2204.10849.pdf) (accepted to [NLDB 2022](https://nldb2022.prhlt.upv.es)).
+
+Source code for research
+paper [Metric Learning and Adaptive Boundary for Out-of-Domain Detection](https://arxiv.org/pdf/2204.10849.pdf) (
+accepted to [NLDB 2022](https://nldb2022.prhlt.upv.es)).
 
 Check out our [conference poster](./poster.pdf)!
 
 ## Usage
+
 Run `python3 code/run.py {clinc150,banking77}` for chosen dataset to replicate results.
 
 ## Dependencies
+
 Run `pip install -r code/requirements.txt` to install dependencies.
 
 ## Datasets
-Evaluated on [CLINC150](https://github.com/clinc/oos-eval) and [BANKING77](https://github.com/PolyAI-LDN/task-specific-datasets).
+
+Evaluated on [CLINC150](https://github.com/clinc/oos-eval)
+and [BANKING77](https://github.com/PolyAI-LDN/task-specific-datasets).
 
 ## Results
+
 ### Overall results
+
 Accuracy and F1 score calculated for all classes (IND classes and OOD class).
 
 |  | | 25% known ratio | | 50% known ratio | | 75% known ratio | |
@@ -41,6 +50,7 @@ Accuracy and F1 score calculated for all classes (IND classes and OOD class).
 | | Our<sub>Triplet</sub> | 82.71 | 70.02 | 81.83 | 83.07 | 81.82 | 86.94 |
 
 ### Class-specific results
+
 F1 score calculated for IND classes and OOD class separately.
 
 |  | | 25% known ratio | | 50% known ratio | | 75% known ratio | |
@@ -64,21 +74,29 @@ F1 score calculated for IND classes and OOD class separately.
 | | Our<sub>Triplet</sub> | 88.0 | 69.1 | 81.9 | 83.0 | 66.8 | 87.2 |
 
 ## Citation
+
 If you like our work, please ⭐ this repository.
 
 ```
-@misc{https://doi.org/10.48550/arxiv.2204.10849,
-  doi = {10.48550/ARXIV.2204.10849},
-  url = {https://arxiv.org/abs/2204.10849},
-  author = {Lorenc, Petr and Gargiani, Tommaso and Pichl, Jan and Konrád, Jakub and Marek, Petr and Kobza, Ondřej and Šedivý, Jan},
-  keywords = {Computation and Language (cs.CL), FOS: Computer and information sciences, FOS: Computer and information sciences},
-  title = {Metric Learning and Adaptive Boundary for Out-of-Domain Detection},
-  publisher = {arXiv},
-  year = {2022}, 
-  copyright = {arXiv.org perpetual, non-exclusive license}
+@InProceedings{10.1007/978-3-031-08473-7_12,
+  author="Lorenc, Petr
+  and Gargiani, Tommaso
+  and Pichl, Jan
+  and Konr{\'a}d, Jakub
+  and Marek, Petr
+  and Kobza, Ond{\v{r}}ej
+  and {\v{S}}ediv{\'y}, Jan",
+  title="Metric Learning and Adaptive Boundary for Out-of-Domain Detection",
+  booktitle="Natural Language Processing and Information Systems",
+  year="2022",
+  publisher="Springer International Publishing",
+  address="Cham",
+  pages="127--134",
+  isbn="978-3-031-08473-7"
 }
 ```
 
 ## Acknowledgments
+
 This research was partially supported by the Grant Agency of the Czech Technical University in Prague, grant
 (SGS22/082/OHK3/1T/37).
