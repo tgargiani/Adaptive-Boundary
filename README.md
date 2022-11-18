@@ -5,8 +5,7 @@
 ## About
 
 Source code for research
-paper [Metric Learning and Adaptive Boundary for Out-of-Domain Detection](https://arxiv.org/pdf/2204.10849.pdf) (
-accepted to [NLDB 2022](https://nldb2022.prhlt.upv.es)).
+paper [Metric Learning and Adaptive Boundary for Out-of-Domain Detection](https://arxiv.org/pdf/2204.10849.pdf) (accepted to [NLDB 2022](https://nldb2022.prhlt.upv.es)).
 
 Check out our [conference poster](./poster.pdf)!
 
